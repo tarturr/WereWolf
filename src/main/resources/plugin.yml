@@ -1,0 +1,5 @@
+name: WereWolf
+version: 0.0.1
+author: Tartur_
+main: fr.tartur.werewolf.WereWolf
+folia-supported: true
