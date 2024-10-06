@@ -7,12 +7,21 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+/**
+ * Class based on the Adapter design pattern, used to easily deal with {@code ItemStack} and {@code GUIItem} classes.
+ * @see ItemStack
+ * @see GUIItem
+ */
+@Accessors(fluent = true)
+@Getter
 public class GUIItemAdapter extends ItemStack {
 
-    @Getter
-    @Accessors(fluent = true)
     private final GUIItem guiItem;
 
+    /**
+     * Class constructor working with an instance of a {@code GUIItem}.
+     * @param guiItem The instance of {@code GUIItem}, stored in the class.
+     */
     public GUIItemAdapter(GUIItem guiItem) {
         super(guiItem.material(), guiItem.amount());
         this.guiItem = guiItem;

@@ -10,6 +10,11 @@ import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Class based on the Adapter design pattern, used to easily deal with {@code Inventory} and {@code GUI} classes.
+ * @see Inventory
+ * @see GUI
+ */
 public class GUIAdapter implements InventoryHolder {
 
     private final Inventory inventory;
@@ -18,6 +23,15 @@ public class GUIAdapter implements InventoryHolder {
     @Accessors(fluent = true)
     private final GUI gui;
 
+    /**
+     * Class constructor, taking an instance of {@code JavaPlugin} to register directly the provided {@code GUI} into
+     * the plugin.
+     * @param main The {@code JavaPlugin} instance (here {@code WereWolf}).
+     * @param gui The {@code GUI} that will be registered directly into the plugin.
+     * @see org.bukkit.plugin.java.JavaPlugin
+     * @see WereWolf
+     * @see GUI
+     */
     public GUIAdapter(WereWolf main, GUI gui) {
         this.gui = gui;
         final int guiSize = this.gui.size();
@@ -42,11 +56,24 @@ public class GUIAdapter implements InventoryHolder {
         }
     }
 
+    /**
+     * Gets the {@code Inventory} associated with the class {@code GUI}.
+     * @return The {@code Inventory} associated with the class {@code GUI}.
+     * @see Inventory
+     * @see GUI
+     */
     @Override
     public @NotNull Inventory getInventory() {
         return this.inventory;
     }
 
+    /**
+     * Gets the {@code GUIItem} associated with the provided {@code ItemStack}.
+     * @param item The provided {@code ItemStack} which corresponds to a {@code GUIItem} in the GUI.
+     * @return The {@code GUIItem} associated with the provided {@code ItemStack}.
+     * @see GUIItem
+     * @see ItemStack
+     */
     public GUIItem select(ItemStack item) {
         return this.gui.select(item);
     }

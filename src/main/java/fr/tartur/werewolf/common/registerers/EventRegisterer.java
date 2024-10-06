@@ -4,12 +4,29 @@ import fr.tartur.werewolf.WereWolf;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 
+/**
+ * A Bukkit event registerer, child class of the {@code BaseRegisterer} class.
+ * @see fr.tartur.werewolf.common.registerers.BaseRegisterer
+ * @see Listener
+ */
 public class EventRegisterer extends BaseRegisterer<Listener> {
 
-    public EventRegisterer(Listener... elements) {
-        super(elements);
+    /**
+     * Class constructor taking as many {@code Listener} instances as needed.
+     * @param listeners Every {@code Listener} needed to be registered into the plugin.
+     * @see Listener
+     */
+    public EventRegisterer(Listener... listeners) {
+        super(listeners);
     }
 
+    /**
+     * The method which has to register all {@code Listener} which needs an instance to {@code JavaPlugin} to be
+     * registered.
+     * @param main The {@code JavaPlugin} instance ({@code WereWolf} in that case).
+     * @see org.bukkit.plugin.java.JavaPlugin
+     * @see WereWolf
+     */
     @Override
     public void registerAll(WereWolf main) {
         PluginManager manager = main.getServer().getPluginManager();

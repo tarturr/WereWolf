@@ -4,6 +4,10 @@ import lombok.Getter;
 import lombok.experimental.Accessors;
 import net.kyori.adventure.text.format.TextColor;
 
+/**
+ * An enum regrouping multiple colors with differents tones. Usable as TextColor, avoiding the verbosity of
+ * {@code TextColor.color()} static method.
+ */
 @Accessors(fluent = true)
 @Getter
 public enum ChatColor {
