@@ -21,6 +21,7 @@ public enum ChatColor {
     LIGHT_INDIGO(TextColor.color(0x7777FF)),
     LIGHT_PURPLE(TextColor.color(0xBB77FF)),
     LIGHT_PINK(TextColor.color(0xFFAAFF)),
+    LIGHT_GRAY(TextColor.color(0xE7E7E7)),
 
     RED(TextColor.color(0xEE0000)),
     ORANGE(TextColor.color(0xFF7700)),
@@ -31,6 +32,7 @@ public enum ChatColor {
     INDIGO(TextColor.color(0x0000FF)),
     PURPLE(TextColor.color(0xAA00FF)),
     PINK(TextColor.color(0xFF77FF)),
+    GRAY(TextColor.color(0xBBBBBB)),
 
     DARK_RED(TextColor.color(0xBB0000)),
     DARK_ORANGE(TextColor.color(0xDD7700)),
@@ -40,7 +42,11 @@ public enum ChatColor {
     DARK_BLUE(TextColor.color(0x0077BB)),
     DARK_INDIGO(TextColor.color(0x0000BB)),
     DARK_PURPLE(TextColor.color(0x8800D0)),
-    DARK_PINK(TextColor.color(0xDD00DD));
+    DARK_PINK(TextColor.color(0xDD00DD)),
+    DARK_GRAY(TextColor.color(0x909090)),
+
+    WHITE(TextColor.color(0xFFFFFF)),
+    BLACK(TextColor.color(0x000000));
 
     private final TextColor color;
 
