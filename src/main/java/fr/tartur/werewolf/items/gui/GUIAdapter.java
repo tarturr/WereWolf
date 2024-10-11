@@ -1,6 +1,6 @@
-package fr.tartur.werewolf.gui.common;
+package fr.tartur.werewolf.items.gui;
 
-import fr.tartur.werewolf.WereWolf;
+import fr.tartur.werewolf.WereWolfCore;
 import fr.tartur.werewolf.exception.InvalidGUICoordinatesException;
 import fr.tartur.werewolf.exception.InvalidGUISizeException;
 import lombok.Getter;
@@ -29,10 +29,10 @@ public class GUIAdapter implements InventoryHolder {
      * @param main The {@code JavaPlugin} instance (here {@code WereWolf}).
      * @param gui The {@code GUI} that will be registered directly into the plugin.
      * @see org.bukkit.plugin.java.JavaPlugin
-     * @see WereWolf
+     * @see WereWolfCore
      * @see GUI
      */
-    public GUIAdapter(WereWolf main, GUI gui) {
+    public GUIAdapter(WereWolfCore main, GUI gui) {
         this.gui = gui;
         final int guiSize = this.gui.size();
 

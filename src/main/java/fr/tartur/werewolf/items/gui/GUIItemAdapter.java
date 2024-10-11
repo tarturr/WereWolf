@@ -1,4 +1,4 @@
-package fr.tartur.werewolf.gui.common;
+package fr.tartur.werewolf.items.gui;
 
 import lombok.Getter;
 import lombok.experimental.Accessors;

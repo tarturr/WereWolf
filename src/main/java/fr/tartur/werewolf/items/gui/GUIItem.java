@@ -1,6 +1,6 @@
-package fr.tartur.werewolf.gui.common;
+package fr.tartur.werewolf.items.gui;
 
-import fr.tartur.werewolf.gui.Clickable;
+import fr.tartur.werewolf.items.Clickable;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Singular;
@@ -10,7 +10,6 @@ import org.bukkit.Material;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
 import java.util.List;
-import java.util.function.Consumer;
 
 /**
  * Class representing a single {@code GUI} component.

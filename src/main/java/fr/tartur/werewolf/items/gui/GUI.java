@@ -1,4 +1,4 @@
-package fr.tartur.werewolf.gui.common;
+package fr.tartur.werewolf.items.gui;
 
 import fr.tartur.werewolf.exception.IllegalGUIStateException;
 import lombok.Builder;

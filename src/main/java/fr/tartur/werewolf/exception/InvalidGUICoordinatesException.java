@@ -4,7 +4,7 @@ package fr.tartur.werewolf.exception;
  * Child class of the {@code IllegalArgumentException} class, thrown when the provided item coordinates are out of
  * bounds of the {@code GUI} size.
  * @see IllegalArgumentException
- * @see fr.tartur.werewolf.gui.common.GUI
+ * @see fr.tartur.werewolf.items.gui.GUI
  */
 public class InvalidGUICoordinatesException extends IllegalArgumentException {
 
