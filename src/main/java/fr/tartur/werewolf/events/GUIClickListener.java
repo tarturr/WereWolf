@@ -42,7 +42,7 @@ public class GUIClickListener implements Listener {
                 event.setCancelled(true);
 
                 final GUIAdapter gui = guiClass.cast(holder);
-                gui.select(event.getCurrentItem()).onPress().accept(event);
+                gui.select(event.getCurrentItem()).onPress().onLeftClick(event);
                 event.getWhoClicked().closeInventory();
             }
         }

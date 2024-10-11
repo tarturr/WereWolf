@@ -1,5 +1,6 @@
 package fr.tartur.werewolf.gui.common;
 
+import fr.tartur.werewolf.gui.Clickable;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Singular;
@@ -70,11 +71,11 @@ public class GUIItem {
     private int y;
 
     /**
-     * The callback {@code Consumer<InventoryClickEvent>} which has to be called when the {@code GUIItem} is clicked by
+     * The callback {@code Clickable<InventoryClickEvent>} which has to be called when the {@code GUIItem} is clicked by
      * a player. Its parameter is an instance of {@code InventoryClickEvent}, and returns nothing.
-     * @see Consumer
+     * @see Clickable
      * @see InventoryClickEvent
      */
-    private final Consumer<InventoryClickEvent> onPress;
+    private final Clickable<InventoryClickEvent> onPress;
 
 }
