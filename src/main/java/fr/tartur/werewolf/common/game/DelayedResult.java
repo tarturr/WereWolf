@@ -1,6 +1,6 @@
 package fr.tartur.werewolf.common.game;
 
-import fr.tartur.werewolf.WereWolf;
+import fr.tartur.werewolf.WereWolfCore;
 import io.papermc.paper.threadedregions.scheduler.ScheduledTask;
 
 import java.beans.PropertyChangeListener;
@@ -35,7 +35,7 @@ public class DelayedResult<T> {
      * Starts the vote timer with a lifetime of 60 seconds.
      * @param main The plugin instance in which the timer will run.
      */
-    public void start(WereWolf main) {
+    public void start(WereWolfCore main) {
         this.task = main.getServer().getGlobalRegionScheduler().runAtFixedRate(main, task -> {
             this.support.firePropertyChange("timer", this.timer, --this.timer);
 

@@ -1,6 +1,6 @@
 package fr.tartur.werewolf.common.registerers;
 
-import fr.tartur.werewolf.WereWolf;
+import fr.tartur.werewolf.WereWolfCore;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 
@@ -25,10 +25,10 @@ public class EventRegisterer extends BaseRegisterer<Listener> {
      * registered.
      * @param main The {@code JavaPlugin} instance ({@code WereWolf} in that case).
      * @see org.bukkit.plugin.java.JavaPlugin
-     * @see WereWolf
+     * @see WereWolfCore
      */
     @Override
-    public void registerAll(WereWolf main) {
+    public void registerAll(WereWolfCore main) {
         PluginManager manager = main.getServer().getPluginManager();
         super.elements.forEach(listener -> manager.registerEvents(listener, main));
     }

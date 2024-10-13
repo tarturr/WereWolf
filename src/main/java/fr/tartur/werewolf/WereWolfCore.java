@@ -2,7 +2,7 @@ package fr.tartur.werewolf;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class WereWolf extends JavaPlugin {
+public class WereWolfCore extends JavaPlugin {
 
     @Override
     public void onEnable() {

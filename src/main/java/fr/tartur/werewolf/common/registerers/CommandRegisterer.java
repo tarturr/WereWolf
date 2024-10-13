@@ -1,6 +1,6 @@
 package fr.tartur.werewolf.common.registerers;
 
-import fr.tartur.werewolf.WereWolf;
+import fr.tartur.werewolf.WereWolfCore;
 import org.bukkit.command.CommandExecutor;
 
 import java.util.Objects;
@@ -35,9 +35,9 @@ public class CommandRegisterer extends BaseRegisterer<CommandRegisterer.CommandD
      * registered.
      * @param main The {@code JavaPlugin} instance ({@code WereWolf} in that case).
      * @see org.bukkit.plugin.java.JavaPlugin
-     * @see WereWolf
+     * @see WereWolfCore
      */
-    public void registerAll(WereWolf main) {
+    public void registerAll(WereWolfCore main) {
         super.elements.forEach(
                 command -> Objects.requireNonNull(main.getCommand(command.name()), "The /" + command.name() +
                                 "was not declared in plugin.yml!")

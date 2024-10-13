@@ -1,6 +1,6 @@
 package fr.tartur.werewolf.common.registerers;
 
-import fr.tartur.werewolf.WereWolf;
+import fr.tartur.werewolf.WereWolfCore;
 
 import java.util.Arrays;
 import java.util.List;
@@ -27,8 +27,8 @@ public abstract class BaseRegisterer<T> {
      * The method which has to register all class elements needing the {@code JavaPlugin} instance to be registered.
      * @param main The {@code JavaPlugin} instance ({@code WereWolf} in that case).
      * @see org.bukkit.plugin.java.JavaPlugin
-     * @see WereWolf
+     * @see WereWolfCore
      */
-    public abstract void registerAll(WereWolf main);
+    public abstract void registerAll(WereWolfCore main);
 
 }
