@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.experimental.Accessors;
 import net.kyori.adventure.text.Component;
 
+import java.util.UUID;
+
 /**
  * Enumeration containing all the Werewolf playable characters.
  */
@@ -29,6 +31,28 @@ public enum CharacterType {
     CharacterType(String name, Component display) {
         this.name = name;
         this.display = display;
+    }
+
+    /**
+     * Builds a new {@code BaseCharacter} with the provided {@code UUID} based on the current {@code CharacterType}.
+     *
+     * @param uuid The UUID of the {@code Player}.
+     *
+     * @return A new instance of a BaseCharacter child class based on the current {@code CharacterType}
+     */
+    public BaseCharacter buildFromUUID(UUID uuid) {
+        return switch (this) {
+            case CLAIRVOYANT -> new ClairVoyant(uuid);
+            case CUPID -> new Cupid(uuid);
+            case HUNTER -> new Hunter(uuid);
+            case LITTLE_GIRL -> new LittleGirl(uuid);
+            case STEALER -> new Stealer(uuid);
+            case VILLAGER -> new Villager(uuid);
+            case WEREWOLF -> new WereWolf(uuid);
+            case WITCH -> new Witch(uuid);
+
+            case UNCHOSEN -> throw new IllegalStateException("Can't build any character from unchosen type.");
+        };
     }
 
 }
