@@ -1,6 +1,6 @@
-package fr.tartur.werewolf.items.gui;
+package fr.tartur.werewolf.items;
 
-import fr.tartur.werewolf.items.Clickable;
+import fr.tartur.werewolf.items.gui.GUI;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Singular;
@@ -17,7 +17,7 @@ import java.util.List;
 @Builder
 @Accessors(fluent = true)
 @Getter
-public class GUIItem {
+public class ClickableItem {
 
     /**
      * The display name of the component as a {@code Component}.

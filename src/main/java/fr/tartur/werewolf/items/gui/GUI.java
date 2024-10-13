@@ -1,6 +1,8 @@
 package fr.tartur.werewolf.items.gui;
 
 import fr.tartur.werewolf.exception.IllegalGUIStateException;
+import fr.tartur.werewolf.items.ClickableItem;
+import fr.tartur.werewolf.items.ClickableItemAdapter;
 import lombok.Builder;
 import lombok.Singular;
 import net.kyori.adventure.text.Component;
@@ -15,26 +17,26 @@ import java.util.List;
  * @param components Each {@code GUIItem} component of the Inventory. Be aware that each {@code GUIItem} coordinates out
  *                   of bounds of the GUI will throw an {@code InvalidGUICoordinatesException}.
  * @see org.bukkit.inventory.Inventory
- * @see GUIItem
+ * @see ClickableItem
  * @see fr.tartur.werewolf.exception.InvalidGUICoordinatesException
  */
 @Builder
-public record GUI(Component title, int size, @Singular List<GUIItem> components) {
+public record GUI(Component title, int size, @Singular List<ClickableItem> components) {
 
     /**
      * Gets the {@code GUIItem} associated with the provided {@code ItemStack}.
      * @param item The provided {@code ItemStack} which corresponds to a {@code GUIItem} in the GUI.
      * @return The {@code GUIItem} associated with the provided {@code ItemStack}.
-     * @see GUIItem
+     * @see ClickableItem
      * @see ItemStack
      */
-    public GUIItem select(ItemStack item) {
+    public ClickableItem select(ItemStack item) {
         return this.components.stream()
-                .map(GUIItemAdapter::new)
+                .map(ClickableItemAdapter::new)
                 .filter(guiItem -> guiItem.getItemMeta().itemName().equals(item.getItemMeta().itemName()))
                 .findFirst()
                 .orElseThrow(IllegalGUIStateException::new)
-                .guiItem();
+                .clickableItem();
 
     }
 

@@ -1,4 +1,4 @@
-package fr.tartur.werewolf.items.gui;
+package fr.tartur.werewolf.items;
 
 import lombok.Getter;
 import lombok.experimental.Accessors;
@@ -10,28 +10,28 @@ import org.bukkit.inventory.meta.ItemMeta;
 /**
  * Class based on the Adapter design pattern, used to easily deal with {@code ItemStack} and {@code GUIItem} classes.
  * @see ItemStack
- * @see GUIItem
+ * @see ClickableItem
  */
 @Accessors(fluent = true)
 @Getter
-public class GUIItemAdapter extends ItemStack {
+public class ClickableItemAdapter extends ItemStack {
 
-    private final GUIItem guiItem;
+    private final ClickableItem clickableItem;
 
     /**
      * Class constructor working with an instance of a {@code GUIItem}.
-     * @param guiItem The instance of {@code GUIItem}, stored in the class.
+     * @param clickableItem The instance of {@code GUIItem}, stored in the class.
      */
-    public GUIItemAdapter(GUIItem guiItem) {
-        super(guiItem.material(), guiItem.amount());
-        this.guiItem = guiItem;
+    public ClickableItemAdapter(ClickableItem clickableItem) {
+        super(clickableItem.material(), clickableItem.amount());
+        this.clickableItem = clickableItem;
 
         final ItemMeta meta = this.getItemMeta();
-        meta.itemName(guiItem.name());
-        meta.lore(guiItem.description());
+        meta.itemName(clickableItem.name());
+        meta.lore(clickableItem.description());
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
 
-        if (guiItem.glowEffect()) {
+        if (clickableItem.glowEffect()) {
             meta.addEnchant(Enchantment.POWER, 1, true);
         }
 
