@@ -1,7 +1,6 @@
 package fr.tartur.werewolf.common.game;
 
-import fr.tartur.werewolf.common.game.characters.BaseCharacter;
-import fr.tartur.werewolf.common.game.characters.CharacterType;
+import fr.tartur.werewolf.common.game.characters.*;
 import org.bukkit.entity.Player;
 
 import java.util.*;
@@ -69,13 +68,14 @@ public class RoleDispatcher implements Supplier<List<BaseCharacter>> {
     @Override
     public List<BaseCharacter> get() {
         final List<BaseCharacter> characters = new ArrayList<>();
-        final List<CharacterType> choicesLeft = Arrays.asList(CharacterType.values());
+        final List<CharacterType> choicesMade = Arrays.asList(CharacterType.values());
 
         for (final CharacterType choice : CharacterType.values()) {
             final List<Player> players = this.playersWithChoice(choice);
             final int count = players.size();
 
-            if (count == 0) {
+            // If no player has chosen the current role.
+            if (count == 0 || choice == CharacterType.UNCHOSEN) {
                 continue;
             }
 
@@ -83,21 +83,21 @@ public class RoleDispatcher implements Supplier<List<BaseCharacter>> {
                     ? players.getFirst()
                     : players.get(new Random().nextInt(count));
 
-            final CharacterType playerRole = this.choices.remove(winner);
-
-            // TODO: Convert player into the appropriated BaseCharacter -- which implies creating all the child classes
-            //  of the BaseCharacter class -- and add it to the characters variable.
-
-            choicesLeft.remove(playerRole);
+            this.choices.remove(winner);
+            choicesMade.remove(choice);
+            characters.add(choice.buildFromUUID(winner.getUniqueId()));
         }
 
         final var remainingPlayers = this.choices.keySet().iterator();
-        final var remainingChoices = choicesLeft.iterator();
 
-        while (remainingPlayers.hasNext() && remainingChoices.hasNext()) {
+        for (CharacterType type : choicesMade) {
             final Player player = remainingPlayers.next();
-            final CharacterType type = remainingChoices.next();
-            // TODO: Do same thing here.
+
+            characters.add(type.buildFromUUID(player.getUniqueId()));
+        }
+
+        while (remainingPlayers.hasNext()) {
+            characters.add(CharacterType.VILLAGER.buildFromUUID(remainingPlayers.next().getUniqueId()));
         }
 
         return characters;
