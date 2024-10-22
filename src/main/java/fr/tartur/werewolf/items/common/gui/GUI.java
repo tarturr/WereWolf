@@ -21,7 +21,7 @@ import java.util.List;
  * @see fr.tartur.werewolf.exception.InvalidGUICoordinatesException
  */
 @Builder
-public record GUI(Component title, int size, @Singular List<ClickableItem> components) {
+public record GUI(Component title, int size, @Singular List<GUIItem> components) {
 
     /**
      * Gets the {@code GUIItem} associated with the provided {@code ItemStack}.
@@ -30,8 +30,8 @@ public record GUI(Component title, int size, @Singular List<ClickableItem> compo
      * @see ClickableItem
      * @see ItemStack
      */
-    public ClickableItem select(ItemStack item) {
-        return this.components.stream()
+    public GUIItem select(ItemStack item) {
+        return (GUIItem) this.components.stream()
                 .map(ClickableItemAdapter::new)
                 .filter(guiItem -> guiItem.getItemMeta().itemName().equals(item.getItemMeta().itemName()))
                 .findFirst()

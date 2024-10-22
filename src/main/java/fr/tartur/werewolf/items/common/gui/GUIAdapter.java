@@ -2,7 +2,6 @@ package fr.tartur.werewolf.items.common.gui;
 
 import fr.tartur.werewolf.exception.InvalidGUICoordinatesException;
 import fr.tartur.werewolf.exception.InvalidGUISizeException;
-import fr.tartur.werewolf.items.common.ClickableItem;
 import fr.tartur.werewolf.items.common.ClickableItemAdapter;
 import lombok.Getter;
 import lombok.experimental.Accessors;
@@ -40,17 +39,17 @@ public class GUIAdapter implements InventoryHolder {
 
         this.inventory = Bukkit.getServer().createInventory(this, guiSize * 9);
 
-        for (final ClickableItem item : this.gui.components()) {
-            final int componentX = item.x();
-            final int componentY = item.y();
+        for (final GUIItem clickableItem : this.gui.components()) {
+            final int componentX = clickableItem.x();
+            final int componentY = clickableItem.y();
 
             if (componentX < 0 || componentX > 8 || componentY < 0 || componentY >= guiSize) {
                 throw new InvalidGUICoordinatesException(guiSize, componentX, componentY);
             }
 
-            final int coordinates = item.x() + 9 * item.y();
+            final int coordinates = clickableItem.x() + 9 * clickableItem.y();
 
-            this.inventory.setItem(coordinates, new ClickableItemAdapter(item));
+            this.inventory.setItem(coordinates, new ClickableItemAdapter(clickableItem));
         }
     }
 
@@ -69,10 +68,10 @@ public class GUIAdapter implements InventoryHolder {
      * Gets the {@code GUIItem} associated with the provided {@code ItemStack}.
      * @param item The provided {@code ItemStack} which corresponds to a {@code GUIItem} in the GUI.
      * @return The {@code GUIItem} associated with the provided {@code ItemStack}.
-     * @see ClickableItem
+     * @see GUIItem
      * @see ItemStack
      */
-    public ClickableItem select(ItemStack item) {
+    public GUIItem select(ItemStack item) {
         return this.gui.select(item);
     }
 
