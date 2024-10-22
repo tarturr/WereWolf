@@ -7,17 +7,17 @@ import lombok.Singular;
 import lombok.experimental.Accessors;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
-import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.Event;
 
 import java.util.List;
 
 /**
  * Class representing a single {@code GUI} component.
  */
-@Builder
+@Builder(toBuilder = true)
 @Accessors(fluent = true)
 @Getter
-public class ClickableItem {
+public class ClickableItem<T extends Event> {
 
     /**
      * The display name of the component as a {@code Component}.
@@ -70,11 +70,26 @@ public class ClickableItem {
     private int y;
 
     /**
-     * The callback {@code Clickable<InventoryClickEvent>} which has to be called when the {@code GUIItem} is clicked by
+     * The callback {@code Clickable<? extends Event>} which has to be called when the {@code GUIItem} is clicked by
      * a player. Its parameter is an instance of {@code InventoryClickEvent}, and returns nothing.
      * @see Clickable
-     * @see InventoryClickEvent
      */
-    private final Clickable<InventoryClickEvent> onPress;
+    private final Clickable<T> onPress;
+
+    /**
+     * Copy constructor only visible for children classes.
+     * @param copy The {@code ClickableItem} (often just a ClickableItem.builder() call) which will be copied to the
+     *             child class.
+     */
+    protected ClickableItem(ClickableItem<T> copy) {
+        this.name = copy.name;
+        this.material = copy.material;
+        this.glowEffect = copy.glowEffect;
+        this.amount = copy.amount;
+        this.description = copy.description;
+        this.x = copy.x;
+        this.y = copy.y;
+        this.onPress = copy.onPress;
+    }
 
 }

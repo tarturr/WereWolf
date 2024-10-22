@@ -3,6 +3,7 @@ package fr.tartur.werewolf.items.common;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.event.Event;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -16,13 +17,13 @@ import org.bukkit.inventory.meta.ItemMeta;
 @Getter
 public class ClickableItemAdapter extends ItemStack {
 
-    private final ClickableItem clickableItem;
+    private final ClickableItem<? extends Event> clickableItem;
 
     /**
      * Class constructor working with an instance of a {@code GUIItem}.
      * @param clickableItem The instance of {@code GUIItem}, stored in the class.
      */
-    public ClickableItemAdapter(ClickableItem clickableItem) {
+    public ClickableItemAdapter(ClickableItem<? extends Event> clickableItem) {
         super(clickableItem.material(), clickableItem.amount());
         this.clickableItem = clickableItem;
 
