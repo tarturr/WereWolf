@@ -15,14 +15,14 @@ import java.util.List;
  */
 public class GUIClickListener implements Listener {
 
-    private final List<? extends Class<? extends GUIAdapter>> guis;
+    private final List<Class<? extends GUIAdapter>> guis;
 
     /**
      * Class constructor taking a list of the {@code Class<? extends GUIAdapter>} objects.
      * @param guis {@code List} of each {@code Class<? extends GUIAdapter>} of each {@code GUIAdapter}.
      * @see GUIAdapter
      */
-    public GUIClickListener(List<? extends Class<? extends GUIAdapter>> guis) {
+    public GUIClickListener(List<Class<? extends GUIAdapter>> guis) {
         this.guis = guis;
     }
 
