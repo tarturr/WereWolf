@@ -1,12 +1,12 @@
 package fr.tartur.werewolf.items.common.gui;
 
-import fr.tartur.werewolf.WereWolfCore;
 import fr.tartur.werewolf.exception.InvalidGUICoordinatesException;
 import fr.tartur.werewolf.exception.InvalidGUISizeException;
 import fr.tartur.werewolf.items.common.ClickableItem;
 import fr.tartur.werewolf.items.common.ClickableItemAdapter;
 import lombok.Getter;
 import lombok.experimental.Accessors;
+import org.bukkit.Bukkit;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
@@ -26,15 +26,11 @@ public class GUIAdapter implements InventoryHolder {
     private final GUI gui;
 
     /**
-     * Class constructor, taking an instance of {@code JavaPlugin} to register directly the provided {@code GUI} into
-     * the plugin.
-     * @param main The {@code JavaPlugin} instance (here {@code WereWolf}).
+     * Class constructor, creating a new {@code GUI}.
      * @param gui The {@code GUI} that will be registered directly into the plugin.
-     * @see org.bukkit.plugin.java.JavaPlugin
-     * @see WereWolfCore
      * @see GUI
      */
-    public GUIAdapter(WereWolfCore main, GUI gui) {
+    public GUIAdapter(GUI gui) {
         this.gui = gui;
         final int guiSize = this.gui.size();
 
@@ -42,7 +38,7 @@ public class GUIAdapter implements InventoryHolder {
             throw new InvalidGUISizeException(guiSize);
         }
 
-        this.inventory = main.getServer().createInventory(this, guiSize * 9);
+        this.inventory = Bukkit.getServer().createInventory(this, guiSize * 9);
 
         for (final ClickableItem item : this.gui.components()) {
             final int componentX = item.x();
