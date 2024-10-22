@@ -1,10 +1,12 @@
 package fr.tartur.werewolf.exception;
 
+import fr.tartur.werewolf.items.common.gui.GUI;
+
 /**
  * Child class of the {@code IllegalStateException} class, thrown when all of the components of the GUI are not present
  * as expected.
  * @see IllegalStateException
- * @see fr.tartur.werewolf.items.gui.GUI
+ * @see GUI
  */
 public class IllegalGUIStateException extends IllegalStateException {
 

@@ -1,10 +1,10 @@
-package fr.tartur.werewolf.items.gui;
+package fr.tartur.werewolf.items.common.gui;
 
 import fr.tartur.werewolf.WereWolfCore;
 import fr.tartur.werewolf.exception.InvalidGUICoordinatesException;
 import fr.tartur.werewolf.exception.InvalidGUISizeException;
-import fr.tartur.werewolf.items.ClickableItem;
-import fr.tartur.werewolf.items.ClickableItemAdapter;
+import fr.tartur.werewolf.items.common.ClickableItem;
+import fr.tartur.werewolf.items.common.ClickableItemAdapter;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 import org.bukkit.inventory.Inventory;

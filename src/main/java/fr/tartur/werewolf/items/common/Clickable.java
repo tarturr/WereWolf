@@ -1,4 +1,4 @@
-package fr.tartur.werewolf.items;
+package fr.tartur.werewolf.items.common;
 
 import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;

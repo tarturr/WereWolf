@@ -1,6 +1,6 @@
-package fr.tartur.werewolf.items;
+package fr.tartur.werewolf.items.common;
 
-import fr.tartur.werewolf.items.gui.GUI;
+import fr.tartur.werewolf.items.common.gui.GUI;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Singular;

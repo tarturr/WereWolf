@@ -1,6 +1,6 @@
 package fr.tartur.werewolf.events;
 
-import fr.tartur.werewolf.items.gui.GUIAdapter;
+import fr.tartur.werewolf.items.common.gui.GUIAdapter;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;

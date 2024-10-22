@@ -1,10 +1,12 @@
 package fr.tartur.werewolf.exception;
 
+import fr.tartur.werewolf.items.common.gui.GUI;
+
 /**
  * Child class of the {@code IllegalArgumentException} class, thrown when the provided size of the {@code GUI} is
  * greater than 6 or less than 1.
  * @see IllegalArgumentException
- * @see fr.tartur.werewolf.items.gui.GUI
+ * @see GUI
  */
 public class InvalidGUISizeException extends IllegalArgumentException {
 
